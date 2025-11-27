@@ -2,6 +2,7 @@ package com.example.crud.controller;
 
 import com.example.crud.entity.Item;
 import com.example.crud.service.ItemService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/items")
-@CrossOrigin(origins = "*") // Allow frontend access
 public class ItemController {
 
     @Autowired
@@ -29,12 +29,12 @@ public class ItemController {
     }
 
     @PostMapping
-    public Item createItem(@RequestBody Item item) {
+    public Item createItem(@Valid @RequestBody Item item) {
         return itemService.saveItem(item);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item itemDetails) {
+    public ResponseEntity<Item> updateItem(@PathVariable Long id, @Valid @RequestBody Item itemDetails) {
         return itemService.getItemById(id)
                 .map(item -> {
                     item.setName(itemDetails.getName());
