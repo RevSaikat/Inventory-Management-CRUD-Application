@@ -16,6 +16,11 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    @GetMapping("/")
+    public String welcome() {
+        return "Welcome to the Inventory Management API! 🚀";
+    }
+
     @GetMapping
     public List<Item> getAllItems() {
         return itemService.getAllItems();
