@@ -37,16 +37,52 @@ services:
   - type: web
     name: crud-frontend
     runtime: node
+services:
+  # Backend Service
+  - type: web
+    name: crud-backend
+    runtime: docker
+    rootDir: backend
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DB_HOST
+        fromDatabase:
+          name: crud-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: crud-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: crud-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: crud-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: crud-db
+          property: password
+      - key: JAVA_OPTS
+        value: -XX:MaxRAMPercentage=75.0
+      - key: PORT
+        value: 8080
+    plan: free
+
+  # Frontend Service
+  - type: web
+    name: crud-frontend
+    runtime: node
     rootDir: frontend
     buildCommand: npm install && npm run build
     startCommand: npm run preview -- --host --port $PORT
     plan: free
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: crud-backend
-          property: host
+        value: https://crud-backend-g8xv.onrender.com
 
 databases:
   - name: crud-db
