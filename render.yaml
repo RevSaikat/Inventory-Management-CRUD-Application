@@ -3,13 +3,22 @@ services:
   - type: web
     name: crud-backend
     runtime: docker
+    rootDir: backend
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: DB_URL
+      - key: DB_HOST
         fromDatabase:
           name: crud-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: crud-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: crud-db
+          property: databaseName
       - key: DB_USERNAME
         fromDatabase:
           name: crud-db
@@ -18,6 +27,8 @@ services:
         fromDatabase:
           name: crud-db
           property: password
+      - key: JAVA_OPTS
+        value: -XX:MaxRAMPercentage=75.0
       - key: PORT
         value: 8080
     plan: free
