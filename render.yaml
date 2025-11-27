@@ -3,7 +3,6 @@ services:
   - type: web
     name: crud-backend
     runtime: docker
-    rootDir: backend
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
@@ -21,6 +20,7 @@ services:
           property: password
       - key: PORT
         value: 8080
+    plan: free
 
   # Frontend Service
   - type: web
@@ -29,6 +29,7 @@ services:
     rootDir: frontend
     buildCommand: npm install && npm run build
     startCommand: npm run preview -- --host --port $PORT
+    plan: free
     envVars:
       - key: VITE_API_URL
         fromService:
