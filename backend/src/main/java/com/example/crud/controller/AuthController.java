@@ -28,6 +28,11 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+    @org.springframework.web.bind.annotation.GetMapping("/debug/users")
+    public java.util.List<User> debugUsers() {
+        return userRepository.findAll();
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest, HttpServletRequest request) {
         Authentication authentication = authenticationManager.authenticate(
