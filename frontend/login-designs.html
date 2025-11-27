@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Design Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8c7851;
+            --primary-hover: #736242;
+            --background-color: #fdfbf7;
+            --surface-color: #ffffff;
+            --text-primary: #4a4036;
+            --text-secondary: #857f79;
+            --border-color: #e6e2d3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5f1e8 100%);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .designs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .design-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(74, 64, 54, 0.1);
+        }
+
+        .design-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .design-preview {
+            border: 2px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: var(--background-color);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Design 1: Centered Card */
+        .design1 {
+            padding: 3rem;
+        }
+
+        .design1 .login-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(74, 64, 54, 0.15);
+        }
+
+        .design1 h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.75rem;
+        }
+
+        .design1 .subtitle-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Design 2: Split Screen */
+        .design2 {
+            display: flex;
+            height: 500px;
+        }
+
+        .design2 .left-side {
+            flex: 1;
+            background: linear-gradient(135deg, #8c7851 0%, #736242 100%);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+
+        .design2 .left-side h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .design2 .right-side {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        /* Design 3: Glassmorphism */
+        .design3 {
+            background: linear-gradient(135deg, #a39e93 0%, #8c7851 100%);
+            padding: 3rem;
+            position: relative;
+        }
+
+        .design3::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .design3 .glass-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(74, 64, 54, 0.2);
+        }
+
+        /* Design 4: Minimal Compact */
+        .design4 {
+            padding: 3rem;
+        }
+
+        .design4 .compact-form {
+            max-width: 350px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(74, 64, 54, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .design4 h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Common Form Styles */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(140, 120, 81, 0.1);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .forgot-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .feature-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .select-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .select-btn:hover {
+            background: var(--primary-hover);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎨 Login Page Design Options</h1>
+        <p class="subtitle">Choose your preferred login page design for the Inventory Management System</p>
+
+        <div class="designs-grid">
+            <!-- Design 1: Centered Card -->
+            <div class="design-card">
+                <div class="design-title">
+                    <span>📋</span> Design 1: Classic Centered Card
+                </div>
+                <div class="design-preview design1">
+                    <div class="login-card">
+                        <h2>Welcome Back</h2>
+                        <p class="subtitle-text">Inventory Management System</p>
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" placeholder="you@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="••••••••">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="remember1">
+                                <label for="remember1"
+                                    style="font-size: 0.875rem; color: var(--text-secondary);">Remember me</label>
+                            </div>
+                            <button type="button" class="btn-primary">Sign In</button>
+                        </form>
+                    </div>
+                </div>
+                <button class="select-btn"
+                    onclick="alert('Design 1 selected! Clean and professional centered card layout.')">Select This
+                    Design</button>
+            </div>
+
+            <!-- Design 2: Split Screen -->
+            <div class="design-card">
+                <div class="design-title">
+                    <span>🎯</span> Design 2: Split Screen Modern
+                </div>
+                <div class="design-preview design2">
+                    <div class="left-side">
+                        <h2>Inventory<br>Management</h2>
+                        <p style="opacity: 0.9; margin-bottom: 2rem;">Streamline your stock tracking with our intuitive
+                            system</p>
+                        <div class="feature-badge">✓ Real-time tracking</div>
+                        <div class="feature-badge">✓ Secure & reliable</div>
+                        <div class="feature-badge">✓ Easy to use</div>
+                    </div>
+                    <div class="right-side">
+                        <form style="width: 100%; max-width: 350px;">
+                            <h2 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.75rem;">Sign In
+                            </h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem;">Access your
+                                dashboard</p>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="Enter password">
+                            </div>
+                            <button type="button" class="btn-primary">Continue</button>
+                        </form>
+                    </div>
+                </div>
+                <button class="select-btn"
+                    onclick="alert('Design 2 selected! Modern split-screen with brand showcase.')">Select This
+                    Design</button>
+            </div>
+
+            <!-- Design 3: Glassmorphism -->
+            <div class="design-card">
+                <div class="design-title">
+                    <span>✨</span> Design 3: Premium Glassmorphism
+                </div>
+                <div class="design-preview design3">
+                    <div class="glass-card">
+                        <h2
+                            style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.75rem; text-align: center;">
+                            Sign In</h2>
+                        <p
+                            style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.875rem;">
+                            Inventory Management Portal</p>
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" placeholder="your.email@company.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-input" placeholder="Enter your password">
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                                <div class="checkbox-group" style="margin: 0;">
+                                    <input type="checkbox" id="remember3">
+                                    <label for="remember3"
+                                        style="font-size: 0.875rem; color: var(--text-secondary);">Remember</label>
+                                </div>
+                                <a href="#" class="forgot-link">Forgot password?</a>
+                            </div>
+                            <button type="button" class="btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
+                <button class="select-btn"
+                    onclick="alert('Design 3 selected! Premium glass effect with modern aesthetics.')">Select This
+                    Design</button>
+            </div>
+
+            <!-- Design 4: Minimal Compact -->
+            <div class="design-card">
+                <div class="design-title">
+                    <span>📱</span> Design 4: Minimal & Compact
+                </div>
+                <div class="design-preview design4">
+                    <div class="compact-form">
+                        <h2>Login</h2>
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-input" placeholder="Email address"
+                                    style="padding: 0.875rem;">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-input" placeholder="Password"
+                                    style="padding: 0.875rem;">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="remember4">
+                                <label for="remember4"
+                                    style="font-size: 0.875rem; color: var(--text-secondary); flex: 1;">Remember
+                                    me</label>
+                                <a href="#" class="forgot-link">Forgot?</a>
+                            </div>
+                            <button type="button" class="btn-primary">Sign In</button>
+                            <p
+                                style="text-align: center; color: var(--text-secondary); font-size: 0.75rem; margin-top: 1.5rem;">
+                                Inventory Management System v1.0
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <button class="select-btn"
+                    onclick="alert('Design 4 selected! Clean, minimal, and compact layout.')">Select This
+                    Design</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: white; border-radius: 1rem;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📝 Next Steps</h3>
+            <p style="color: var(--text-secondary);">Click "Select This Design" on your preferred option, and I'll
+                implement it into your application!</p>
+        </div>
+    </div>
+</body>
+
+</html>
