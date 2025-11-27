@@ -35,20 +35,25 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest, HttpServletRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            request.getSession().setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
 
-        // Explicitly save the security context to the session
-        request.getSession().setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+            User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
 
-        User user = userRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
-
-        return ResponseEntity.ok(Map.of(
-                "message", "Login successful",
-                "username", user.getUsername(),
-                "role", user.getRole()));
+            return ResponseEntity.ok(Map.of(
+                    "message", "Login successful",
+                    "username", user.getUsername(),
+                    "role", user.getRole()));
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body(Map.of(
+                    "error", "Authentication failed",
+                    "details", e.getMessage(),
+                    "receivedUsername", loginRequest.getUsername()));
+        }
     }
 
     @Data
