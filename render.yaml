@@ -34,7 +34,7 @@ services:
         fromService:
           type: web
           name: crud-backend
-          property: url
+          property: host
 
 databases:
   - name: crud-db
