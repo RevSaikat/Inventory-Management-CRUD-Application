@@ -35,3 +35,6 @@ export const getItem = (id) => axios.get(`${API_URL}/${id}`, { withCredentials: 
 export const createItem = (item) => axios.post(API_URL, item, { withCredentials: true });
 export const updateItem = (id, item) => axios.put(`${API_URL}/${id}`, item, { withCredentials: true });
 export const deleteItem = (id) => axios.delete(`${API_URL}/${id}`, { withCredentials: true });
+
+// Export API_BASE_URL for use in components
+export { API_BASE_URL };

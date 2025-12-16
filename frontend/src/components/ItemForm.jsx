@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createItem, updateItem } from '../services/api';
+import { createItem, updateItem, API_BASE_URL } from '../services/api';
 import axios from 'axios';
 
 const ItemForm = ({ currentItem, onSave, onCancel }) => {
@@ -11,7 +11,7 @@ const ItemForm = ({ currentItem, onSave, onCancel }) => {
     useEffect(() => {
         if (currentItem) {
             setItem(currentItem);
-            setImagePreview(currentItem.imageUrl ? `http://localhost:8080${currentItem.imageUrl}` : null);
+            setImagePreview(currentItem.imageUrl ? `${API_BASE_URL}${currentItem.imageUrl}` : null);
         } else {
             setItem({ name: '', description: '', price: '', category: '', quantity: '', imageUrl: '' });
             setImagePreview(null);
@@ -44,7 +44,7 @@ const ItemForm = ({ currentItem, onSave, onCancel }) => {
                 const formData = new FormData();
                 formData.append('file', imageFile);
 
-                const uploadResponse = await axios.post('http://localhost:8080/api/upload', formData, {
+                const uploadResponse = await axios.post(`${API_BASE_URL}/api/upload`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

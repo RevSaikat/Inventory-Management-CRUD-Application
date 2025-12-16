@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getItems, deleteItem } from '../services/api';
+import { getItems, deleteItem, API_BASE_URL } from '../services/api';
 
 const ItemList = ({ onEdit, isAdmin, searchTerm }) => {
     const [items, setItems] = useState([]);
@@ -70,7 +70,7 @@ const ItemList = ({ onEdit, isAdmin, searchTerm }) => {
                                     <td>
                                         {item.imageUrl ? (
                                             <img
-                                                src={`http://localhost:8080${item.imageUrl}`}
+                                                src={`${API_BASE_URL}${item.imageUrl}`}
                                                 alt={item.name}
                                                 style={{
                                                     width: '50px',
