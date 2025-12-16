@@ -6,6 +6,7 @@ import ItemsPage from './pages/ItemsPage';
 import Home from './pages/Home';
 import SettingsPage from './pages/SettingsPage';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import './App.css';
 
 import { Navigate } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<ProtectedRoute><Layout><Home /></Layout></ProtectedRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>} />
         <Route path="/items" element={<ProtectedRoute><Layout><ItemsPage /></Layout></ProtectedRoute>} />

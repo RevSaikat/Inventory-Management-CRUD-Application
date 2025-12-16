@@ -21,6 +21,15 @@ export const login = async (username, password) => {
     return response.data;
 };
 
+export const register = async (username, password, confirmPassword) => {
+    const response = await axios.post(`${AUTH_URL}/register`, {
+        username,
+        password,
+        confirmPassword
+    }, { withCredentials: true });
+    return response.data;
+};
+
 export const getItems = () => axios.get(API_URL, { withCredentials: true });
 export const getItem = (id) => axios.get(`${API_URL}/${id}`, { withCredentials: true });
 export const createItem = (item) => axios.post(API_URL, item, { withCredentials: true });

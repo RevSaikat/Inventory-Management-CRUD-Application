@@ -113,6 +113,27 @@
     margin-top: 2rem;
 }
 
+.signup-prompt {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.signup-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.signup-link:hover {
+    color: #6d5940;
+    text-decoration: underline;
+}
+
 /* Password input wrapper */
 .password-input-wrapper {
     position: relative;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../services/api';
 import './Login.css';
 
@@ -187,6 +187,10 @@ const Login = () => {
                             <p>Default credentials:</p>
                             <p>Admin: <strong>admin / admin</strong></p>
                             <p>User: <strong>user / user</strong></p>
+                        </div>
+
+                        <div className="signup-prompt">
+                            <p>Don't have an account? <Link to="/signup" className="signup-link">Sign Up</Link></p>
                         </div>
                     </form>
                 </div>
