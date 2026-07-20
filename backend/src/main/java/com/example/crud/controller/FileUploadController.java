@@ -31,6 +31,9 @@ public class FileUploadController {
 
             // Generate unique filename
             String originalFilename = file.getOriginalFilename();
+            if (originalFilename == null || !originalFilename.contains(".")) {
+                throw new IOException("Invalid file name");
+            }
             String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
             String uniqueFilename = UUID.randomUUID().toString() + extension;
 

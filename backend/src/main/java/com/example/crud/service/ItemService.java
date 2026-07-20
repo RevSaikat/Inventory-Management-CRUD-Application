@@ -18,15 +18,15 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public Optional<Item> getItemById(Long id) {
+    public Optional<Item> getItemById(@org.springframework.lang.NonNull Long id) {
         return itemRepository.findById(id);
     }
 
-    public Item saveItem(Item item) {
+    public Item saveItem(@org.springframework.lang.NonNull Item item) {
         return itemRepository.save(item);
     }
 
-    public void deleteItem(Long id) {
+    public void deleteItem(@org.springframework.lang.NonNull Long id) {
         itemRepository.deleteById(id);
     }
 }

@@ -27,19 +27,19 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable Long id) {
+    public ResponseEntity<Item> getItemById(@org.springframework.lang.NonNull @PathVariable Long id) {
         return itemService.getItemById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Item createItem(@Valid @RequestBody Item item) {
+    public Item createItem(@org.springframework.lang.NonNull @Valid @RequestBody Item item) {
         return itemService.saveItem(item);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItem(@PathVariable Long id, @Valid @RequestBody Item itemDetails) {
+    public ResponseEntity<Item> updateItem(@org.springframework.lang.NonNull @PathVariable Long id, @org.springframework.lang.NonNull @Valid @RequestBody Item itemDetails) {
         return itemService.getItemById(id)
                 .map(item -> {
                     item.setName(itemDetails.getName());
@@ -54,7 +54,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteItem(@org.springframework.lang.NonNull @PathVariable Long id) {
         if (itemService.getItemById(id).isPresent()) {
             itemService.deleteItem(id);
             return ResponseEntity.ok().build();

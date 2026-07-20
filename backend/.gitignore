@@ -36,3 +36,6 @@ application-*.properties
 
 # Uploads directory
 uploads/
+
+#AI
+memory.md
